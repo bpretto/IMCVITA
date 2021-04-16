@@ -25,6 +25,7 @@ export default function Calculate() {
     const hideDialog = () => setVisible(false);
     const hideMissingFieldsDialog = () => setMissingFieldsVisible(false);
     const handleNavigateToSpecifiedBMITips = () => {
+        setVisible(false);
         navigation.navigate('SpecifiedBMITips')
     };
 

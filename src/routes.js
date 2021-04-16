@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import Homepage from "./pages/Homepage";
 import Calculate from "./pages/Calculate";
+import SpecifiedBMITips from "./pages/SpecifiedBMITips";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -29,6 +30,7 @@ export default function Routes() {
                 <Navigator screenOptions={{ headerShown: false }}>
                     <Screen name="Homepage" component={Homepage} />
                     <Screen name="Calculate" component={Calculate} />
+                    <Screen name="SpecifiedBMITips" component={SpecifiedBMITips} />
                 </Navigator>
             </NavigationContainer>
         </PaperProvider >
