@@ -7,25 +7,23 @@ import logo from "../images/logo.png"
 import themeStyle from "../styles/theme.style";
 
 
-export default function Calculate() {
+export default function Calculate({ navigation }) {
 
     const [height, setHeight] = React.useState('');
     const [weight, setWeight] = React.useState('');
-
-    const navigation = useNavigation();
-
+    const [BMI, setBMI] = React.useState('');
     const [visible, setVisible] = React.useState(false);
     const [missingFieldsVisible, setMissingFieldsVisible] = React.useState(false);
 
     function calculateBMI(height, weight) {
-        const BMI = weight / (height * height)
-        return BMI
-    }
+        const calculate = weight / (height * height);
+        setBMI(calculate);
+    };
 
     function showDialog() {
         if (!weight || !height) {
             setMissingFieldsVisible(true);
-        } else if (calculateBMI(height, weight) < 16 || calculateBMI(height, weight) > 55) {
+        } else if (BMI < 16 || BMI > 55) {
             setMissingFieldsVisible(true);
         } else {
             setVisible(true)
@@ -34,9 +32,7 @@ export default function Calculate() {
     const hideDialog = () => setVisible(false);
     const hideMissingFieldsDialog = () => setMissingFieldsVisible(false);
 
-
-
-    function handleNavigateToSpecifiedBMITips(BMI = 19.5) {
+    function handleNavigateToSpecifiedBMITips() {
         setVisible(false);
 
         let categoryId;
@@ -44,8 +40,8 @@ export default function Calculate() {
             categoryId = 1
         } else if (BMI <= 18.4) {
             categoryId = 2
-            console.log("2")
         } else if (BMI <= 24.9) {
+            console.log(BMI);
             categoryId = 3
         } else if (BMI <= 29.9) {
             categoryId = 4
@@ -62,7 +58,7 @@ export default function Calculate() {
 
     return (
         <View style={styles.container}>
-            <Image source={logo} style={styles.logo}></Image>
+            <Image source={logo} style={styles.logo} />
 
             <TextInput
                 name="Altura"
@@ -73,6 +69,7 @@ export default function Calculate() {
                 value={height}
                 onChangeText={height => setHeight(height)}
                 color="#000000"
+                keyboardType="numeric"
                 render={(props) => (
                     <TextInputMask
                         {...props}
@@ -93,6 +90,7 @@ export default function Calculate() {
                 value={weight}
                 onChangeText={weight => setWeight(weight)}
                 color="#000000"
+                keyboardType="numeric"
                 render={(props) => (
                     <TextInputMask
                         {...props}
@@ -131,9 +129,6 @@ export default function Calculate() {
                     </Dialog.Actions>
                 </Dialog>
             </Portal>
-            <Button icon="information-outline" color={themeStyle.green} onPress={() => console.log('Pressed')}>
-                Sobre nós
-            </Button>
         </View >
     )
 }

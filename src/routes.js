@@ -36,7 +36,7 @@ export default function Routes() {
                     fontWeight: 'bold',
                 },
             }}>
-                <Navigator >
+                <Navigator  >
                     <Screen name="Homepage" component={Homepage} options={{ headerShown: false }} />
                     <Screen name="Calculate" component={Calculate} options={{
                         title: "Calcular IMC",
