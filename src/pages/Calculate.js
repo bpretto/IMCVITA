@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { Image, StyleSheet, TextInput, View } from "react-native";
+import { TextInputMask } from "react-native-masked-text";
 import { Button, Dialog, Paragraph, Portal } from "react-native-paper";
 import logo from "../images/logo.png"
 import themeStyle from "../styles/theme.style";
@@ -15,8 +16,16 @@ export default function Calculate() {
 
     const [visible, setVisible] = React.useState(false);
     const [missingFieldsVisible, setMissingFieldsVisible] = React.useState(false);
+
+    function calculateBMI(height, weight) {
+        const BMI = weight / (height * height)
+        return BMI
+    }
+
     function showDialog() {
         if (!weight || !height) {
+            setMissingFieldsVisible(true);
+        } else if (calculateBMI(height, weight) < 16 || calculateBMI(height, weight) > 55) {
             setMissingFieldsVisible(true);
         } else {
             setVisible(true)
@@ -24,9 +33,31 @@ export default function Calculate() {
     }
     const hideDialog = () => setVisible(false);
     const hideMissingFieldsDialog = () => setMissingFieldsVisible(false);
-    const handleNavigateToSpecifiedBMITips = () => {
+
+
+
+    function handleNavigateToSpecifiedBMITips(BMI = 19.5) {
         setVisible(false);
-        navigation.navigate('SpecifiedBMITips')
+
+        let categoryId;
+        if (BMI <= 16.9) {
+            categoryId = 1
+        } else if (BMI <= 18.4) {
+            categoryId = 2
+            console.log("2")
+        } else if (BMI <= 24.9) {
+            categoryId = 3
+        } else if (BMI <= 29.9) {
+            categoryId = 4
+        } else if (BMI <= 34.9) {
+            categoryId = 5
+        } else if (BMI >= 35) {
+            categoryId = 6
+        }
+
+        navigation.navigate('SpecifiedBMITips', {
+            categoryId
+        });
     };
 
     return (
@@ -34,23 +65,43 @@ export default function Calculate() {
             <Image source={logo} style={styles.logo}></Image>
 
             <TextInput
-                label="Altura"
-                placeholder="   Insira sua altura..."
+                name="Altura"
+                label="1.75"
+                placeholder="Insira sua altura..."
                 type='outlined'
                 style={styles.input}
                 value={height}
                 onChangeText={height => setHeight(height)}
                 color="#000000"
+                render={(props) => (
+                    <TextInputMask
+                        {...props}
+                        type={"custom"}
+                        options={{
+                            mask: "1.75",
+                        }}
+                    />
+                )}
             />
 
             <TextInput
-                label="Peso"
-                placeholder="   Insira seu peso..."
+                name="Peso"
+                label="65"
+                placeholder="Insira seu peso..."
                 type='outlined'
                 style={styles.input}
                 value={weight}
                 onChangeText={weight => setWeight(weight)}
                 color="#000000"
+                render={(props) => (
+                    <TextInputMask
+                        {...props}
+                        type={"custom"}
+                        options={{
+                            mask: "1.75",
+                        }}
+                    />
+                )}
             />
 
             <Button icon="calculator" mode="contained" style={styles.button} dark={true} onPress={showDialog}>
@@ -60,7 +111,7 @@ export default function Calculate() {
                 <Dialog style={styles.dialog} visible={visible} onDismiss={hideDialog}>
                     <Dialog.Title style={styles.dialogTitle}>O seu IMC é:</Dialog.Title>
                     <Dialog.Content>
-                        <Paragraph style={styles.dialogParagraph}>25,8</Paragraph>
+                        <Paragraph style={styles.dialogParagraph}>{calculateBMI(height, weight)}</Paragraph>
                     </Dialog.Content>
                     <Dialog.Actions style={styles.dialogActions}>
                         <Button onPress={handleNavigateToSpecifiedBMITips}>Ver dicas para meu IMC</Button>
@@ -71,7 +122,9 @@ export default function Calculate() {
                 <Dialog style={styles.dialog} visible={missingFieldsVisible} onDismiss={hideMissingFieldsDialog}>
                     <Dialog.Title style={styles.dialogTitle}>Erro:</Dialog.Title>
                     <Dialog.Content>
-                        <Paragraph style={styles.dialogParagraph}>Você deve preencher os campos corretamente para que seu IMC seja calculado!</Paragraph>
+                        <Paragraph style={styles.dialogParagraph}>Você deve preencher os campos
+                        corretamente para que seu IMC seja calculado!
+                        </Paragraph>
                     </Dialog.Content>
                     <Dialog.Actions style={styles.dialogActions}>
                         <Button onPress={hideMissingFieldsDialog}>Ok</Button>
@@ -125,8 +178,5 @@ const styles = StyleSheet.create({
         color: "#0AC5A8",
         textAlign: 'center',
         fontSize: 20
-    },
-
-    dialogActions: {
     },
 });

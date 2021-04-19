@@ -4,7 +4,6 @@ import { Image, StyleSheet, View } from "react-native";
 import { Button } from "react-native-paper";
 import logo from "../images/logo.png"
 import themeStyle from "../styles/theme.style";
-import Calculate from "./Calculate";
 
 
 export default function Homepage() {
@@ -15,19 +14,31 @@ export default function Homepage() {
         navigation.navigate('Calculate');
     };
 
+    function handleNavigateToFoodTips() {
+        navigation.navigate('FoodTips');
+    };
+
+    function handleNavigateToExerciseTips() {
+        navigation.navigate('ExerciseTips');
+    };
+
+    function handleNavigateToAboutUs() {
+        navigation.navigate('AboutUs');
+    };
+
     return (
         <View style={styles.container}>
             <Image source={logo} style={styles.logo}></Image>
             <Button icon="calculator" mode="contained" style={styles.button} dark={true} onPress={handleNavigateToCalculate}>
                 Calcular IMC
             </Button>
-            <Button icon="silverware-fork-knife" mode="contained" style={styles.button} dark={true} onPress={() => console.log('Pressed')}>
+            <Button icon="silverware-fork-knife" mode="contained" style={styles.button} dark={true} onPress={handleNavigateToFoodTips}>
                 Dicas de alimentação
             </Button>
-            <Button icon="weight-lifter" mode="contained" style={styles.button} dark={true} onPress={() => console.log('Pressed')}>
+            <Button icon="weight-lifter" mode="contained" style={styles.button} dark={true} onPress={handleNavigateToExerciseTips}>
                 Dicas de exercícios
             </Button>
-            <Button icon="information-outline" color={themeStyle.green} onPress={() => console.log('Pressed')}>
+            <Button icon="information-outline" color={themeStyle.green} onPress={handleNavigateToAboutUs}>
                 Sobre nós
             </Button>
         </View>
