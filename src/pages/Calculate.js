@@ -1,29 +1,40 @@
-import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { Image, StyleSheet, TextInput, View } from "react-native";
 import { TextInputMask } from "react-native-masked-text";
 import { Button, Dialog, Paragraph, Portal } from "react-native-paper";
 import logo from "../images/logo.png"
-import themeStyle from "../styles/theme.style";
 
 
 export default function Calculate({ navigation }) {
 
     const [height, setHeight] = React.useState('');
     const [weight, setWeight] = React.useState('');
-    const [BMI, setBMI] = React.useState('');
     const [visible, setVisible] = React.useState(false);
     const [missingFieldsVisible, setMissingFieldsVisible] = React.useState(false);
+    let BMI;
+    let categoryId;
 
     function calculateBMI(height, weight) {
-        const calculate = weight / (height * height);
-        setBMI(calculate);
+        BMI = parseFloat((weight / (height * height)).toFixed(1));
+
+        if (BMI <= 16.9) {
+            categoryId = 1
+        } else if (BMI <= 18.4) {
+            categoryId = 2
+        } else if (BMI <= 24.9) {
+            categoryId = 3
+        } else if (BMI <= 29.9) {
+            categoryId = 4
+        } else if (BMI <= 34.9) {
+            categoryId = 5
+        } else if (BMI >= 35) {
+            categoryId = 6
+        }
+        return (BMI)
     };
 
     function showDialog() {
         if (!weight || !height) {
-            setMissingFieldsVisible(true);
-        } else if (BMI < 16 || BMI > 55) {
             setMissingFieldsVisible(true);
         } else {
             setVisible(true)
@@ -34,22 +45,6 @@ export default function Calculate({ navigation }) {
 
     function handleNavigateToSpecifiedBMITips() {
         setVisible(false);
-
-        let categoryId;
-        if (BMI <= 16.9) {
-            categoryId = 1
-        } else if (BMI <= 18.4) {
-            categoryId = 2
-        } else if (BMI <= 24.9) {
-            console.log(BMI);
-            categoryId = 3
-        } else if (BMI <= 29.9) {
-            categoryId = 4
-        } else if (BMI <= 34.9) {
-            categoryId = 5
-        } else if (BMI >= 35) {
-            categoryId = 6
-        }
 
         navigation.navigate('SpecifiedBMITips', {
             categoryId
@@ -149,13 +144,13 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         backgroundColor: '#fff',
         borderColor: '#0AC5A8',
-        width: 210,
+        width: 250,
         height: 34,
     },
 
     button: {
         marginTop: 10,
-        width: 210,
+        width: 250,
     },
 
     dialog: {

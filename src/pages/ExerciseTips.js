@@ -1,6 +1,6 @@
 import React from "react";
-import { Image, StyleSheet, View, SafeAreaView, ScrollView, StatusBar } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Image, StyleSheet, View, SafeAreaView, ScrollView } from "react-native";
+import { Card, Title, Paragraph } from 'react-native-paper';
 import { exerciseTips } from "../exerciseTips"
 
 import logo from "../images/logo.png";

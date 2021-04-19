@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { Button, IconButton } from "react-native-paper";
 import logo from "../images/logo.png"
 
 
@@ -41,10 +40,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-
-    button: {
-
     },
 
     text: {

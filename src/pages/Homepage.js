@@ -1,14 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 import logo from "../images/logo.png"
 import themeStyle from "../styles/theme.style";
 
 
-export default function Homepage() {
-
-    const navigation = useNavigation();
+export default function Homepage({ route, navigation }) {
+    const { username } = route.params;
 
     function handleNavigateToCalculate() {
         navigation.navigate('Calculate');
@@ -29,6 +28,7 @@ export default function Homepage() {
     return (
         <View style={styles.container}>
             <Image source={logo} style={styles.logo}></Image>
+            <Text style={styles.username}>Como podemos lhe ajudar, {username}?</Text>
             <Button icon="calculator" mode="contained" style={styles.button} dark={true} onPress={handleNavigateToCalculate}>
                 Calcular IMC
             </Button>
@@ -56,8 +56,15 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
 
+    username: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: "#0AC5A8",
+        marginBottom: 15
+    },
+
     button: {
         marginTop: 10,
-        width: 210,
+        width: 250,
     },
 });

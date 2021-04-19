@@ -2,7 +2,7 @@ export const foodTips = [
     {
         "id": 1,
         "title": "Muito abaixo do peso",
-        "description": "É necessário incluir na sua dieta alimentos para te ajudar a recuperar a massa muscular. Alguns alimentos que podem te ajudar nesse processo são: Proteínas: Carnes magras (alcatra, filé mignon, maminha, fraldinha), frango, peixes, ovos e leite e derivados. Gorduras boas: amendoim, linhaça, abacate e nozes. Carboidratos: pães, bolos, massas, mandioca, batata, milho e cereais, de preferência integrais. Evite o consumo de alimentos industrializados, diet e light e adoçantes artificiais. Fracione suas refeições, se alimente de 3 em 3 horas. Nesse caso, além do tratamento nutricional, também é recomendado um acompanhamento terapêutico."
+        "description": "É necessário incluir na sua dieta alimentos para te ajudar a recuperar a massa muscular, como: Proteínas: Carnes magras, frango, peixes, ovos e leite e derivados. Gorduras boas: amendoim, linhaça, abacate e nozes. Carboidratos: pães, bolos, massas, mandioca, batata, milho e cereais, de preferência integrais. Fracione suas refeições, se alimente de 3 em 3 horas. Nesse caso, além do tratamento nutricional, também é recomendado um acompanhamento terapêutico."
     },
     {
         "id": 2,
@@ -27,7 +27,7 @@ export const foodTips = [
     {
         "id": 6,
         "title": "Obesidade grau 2",
-        "description": "Primeiramente, é necessário diminuir ao máximo o consumo de industrializados e ricos em gordura, como salgadinhos, bolachas recheadas e fast-foods. Sua dieta alimentar precisa ser rica em fibras e o seu consumo de proteínas magras tem que ser intensificado. É recomendado beber muita água durante o dia, pois além de ser imprescindível para todas as funções do organismo, ajuda as fibras a cumprirem seu papel. Além disso, evita que o cérebro confunda sede com fome, regulando a compulsão por comer. Nesse caso, além do tratamento nutricional, também é recomendado um acompanhamento terapêutico."
+        "description": "É necessário diminuir ao máximo o consumo de industrializados e ricos em gordura. Sua dieta alimentar precisa ser rica em fibras e o seu consumo de proteínas magras tem que ser intensificado. É recomendado beber muita água durante o dia, pois ajuda as fibras a cumprirem seu papel e evita que o cérebro confunda sede com fome, regulando a compulsão por comer. Nesse caso, além do tratamento nutricional, também é recomendado um acompanhamento terapêutico."
     },
     {
         "id": 7,

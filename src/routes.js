@@ -2,12 +2,14 @@ import React from "react";
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
+import Welcome from "./pages/Welcome"
 import Homepage from "./pages/Homepage";
 import Calculate from "./pages/Calculate";
 import SpecifiedBMITips from "./pages/SpecifiedBMITips";
 import FoodTips from "./pages/FoodTips";
 import ExerciseTips from "./pages/ExerciseTips";
 import AboutUs from "./pages/AboutUs";
+import { StatusBar } from "expo-status-bar";
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -31,12 +33,14 @@ export default function Routes() {
     return (
         <PaperProvider theme={theme}>
             <NavigationContainer theme={theme} screenOptions={{
+                barStyle: 'light-content',
                 headerTintColor: '#0AC5A8',
                 headerTitleStyle: {
                     fontWeight: 'bold',
                 },
             }}>
-                <Navigator  >
+                <Navigator >
+                    <Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                     <Screen name="Homepage" component={Homepage} options={{ headerShown: false }} />
                     <Screen name="Calculate" component={Calculate} options={{
                         title: "Calcular IMC",
