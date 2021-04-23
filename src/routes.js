@@ -9,7 +9,6 @@ import SpecifiedBMITips from "./pages/SpecifiedBMITips";
 import FoodTips from "./pages/FoodTips";
 import ExerciseTips from "./pages/ExerciseTips";
 import AboutUs from "./pages/AboutUs";
-import { StatusBar } from "expo-status-bar";
 
 
 const { Navigator, Screen } = createStackNavigator();

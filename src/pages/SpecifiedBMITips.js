@@ -1,12 +1,10 @@
 import React from "react";
 import { Image, StyleSheet, View, SafeAreaView, ScrollView, Text } from "react-native";
 import { Avatar, Card, Title, Paragraph } from 'react-native-paper';
-import { exerciseTips } from "../exerciseTips";
-import { foodTips } from "../foodTips";
+import { exerciseTips } from "../tips/exerciseTips";
+import { foodTips } from "../tips/foodTips";
 
 import logo from "../images/logo.png";
-
-const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 export default function SpecifiedBMITips({ route }) {
     const { categoryId } = route.params;
@@ -27,14 +25,14 @@ export default function SpecifiedBMITips({ route }) {
                 >
                     <Card style={styles.firstCard} acessible={false}>
                         <Card.Content>
-                            <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                            <Card.Cover source={{ uri: 'https://vitasuco.com.br/wp-content/uploads/2020/08/capa_blog_vita_suco.png' }} />
                             <Title style={styles.cardTitle}>Dica de alimentação</Title>
                             <Paragraph style={styles.cardParagraph}>{foodTip[0].description}</Paragraph>
                         </Card.Content>
                     </Card>
                     <Card style={styles.card} acessible={false}>
                         <Card.Content>
-                            <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                            <Card.Cover source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/runningfeet-1446281102.jpg' }} />
                             <Title style={styles.cardTitle} >Dica de exercício</Title>
                             <Paragraph style={styles.cardParagraph}>{exerciseTip[0].description}</Paragraph>
                         </Card.Content>
@@ -49,24 +47,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
 
     logo: {
-        maxHeight: 90,
-        maxWidth: 185,
-        marginBottom: 45,
+        maxHeight: 100,
+        maxWidth: 200,
+        marginTop: 50
     },
+
 
     title: {
         fontSize: 20,
         fontWeight: 'bold',
         color: "#0AC5A8",
-        marginBottom: 15
+        marginVertical: 10
     },
 
     scrollContainer: {
-        maxHeight: 510
+        marginBottom: 50,
+        maxHeight: 520
     },
 
     scrollView: {
@@ -74,14 +74,14 @@ const styles = StyleSheet.create({
     },
 
     firstCard: {
-        maxHeight: 470,
+        maxHeight: 480,
         width: 300,
         marginTop: 20,
         marginHorizontal: 20,
     },
 
     card: {
-        maxHeight: 470,
+        maxHeight: 480,
         width: 300,
         marginTop: 20,
         marginRight: 20,

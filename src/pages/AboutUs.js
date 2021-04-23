@@ -1,24 +1,9 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import logo from "../images/logo.png"
 
 
 export default function AboutUs() {
-
-    const navigation = useNavigation();
-
-    function handleNavigateToCalculate() {
-        navigation.navigate('Calculate');
-    };
-
-    function handleNavigateToFoodTips() {
-        navigation.navigate('FoodTips');
-    };
-
-    function handleNavigateToExerciseTips() {
-        navigation.navigate('ExerciseTips');
-    };
 
     return (
         <View style={styles.container}>

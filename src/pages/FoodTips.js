@@ -1,7 +1,7 @@
 import React from "react";
-import { Image, StyleSheet, View, SafeAreaView, ScrollView, StatusBar } from "react-native";
+import { Image, StyleSheet, View, SafeAreaView, ScrollView } from "react-native";
 import { Card, Title, Paragraph } from 'react-native-paper';
-import { foodTips } from "../foodTips"
+import { foodTips } from "../tips/foodTips"
 
 import logo from "../images/logo.png";
 
@@ -71,14 +71,12 @@ const styles = StyleSheet.create({
     logo: {
         maxHeight: 90,
         maxWidth: 185,
-        marginTop: 25
-    },
-
-    scrollContainer: {
+        marginTop: 25,
+        marginBottom: 25
     },
 
     safeAreaView: {
-        height: 650,
+        maxHeight: '91%'
     },
 
     scrollView: {
