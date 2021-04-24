@@ -31,13 +31,7 @@ const theme = {
 export default function Routes() {
     return (
         <PaperProvider theme={theme}>
-            <NavigationContainer theme={theme} screenOptions={{
-                barStyle: 'light-content',
-                headerTintColor: '#0AC5A8',
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                },
-            }}>
+            <NavigationContainer theme={theme}>
                 <Navigator >
                     <Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                     <Screen name="Homepage" component={Homepage} options={{ headerShown: false }} />

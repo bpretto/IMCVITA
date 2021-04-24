@@ -1,9 +1,7 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 import logo from "../images/logo.png"
-import themeStyle from "../styles/theme.style";
 
 
 export default function Homepage({ route, navigation }) {
@@ -38,7 +36,7 @@ export default function Homepage({ route, navigation }) {
             <Button icon="weight-lifter" mode="contained" style={styles.button} dark={true} onPress={handleNavigateToExerciseTips}>
                 Dicas de exercícios
             </Button>
-            <Button icon="information-outline" color={themeStyle.green} onPress={handleNavigateToAboutUs}>
+            <Button icon="information-outline" color="#0AC5A8" onPress={handleNavigateToAboutUs}>
                 Sobre nós
             </Button>
         </View>

@@ -1,10 +1,9 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import logo from "../images/logo.png"
+import logo from "../images/logo.png";
 
 
 export default function AboutUs() {
-
     return (
         <View style={styles.container}>
             <Text style={styles.text}>
